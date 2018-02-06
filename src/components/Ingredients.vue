@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <!--<transition-group name="fade" tag="tbody">-->
-                <tr  v-for="ingredient in ingredientsMenu" :key="ingredient.index">
+                <tr  v-for="ingredient in ingredientsMenu" :key="ingredient.index" @click="deleteIngredient(ingredient)">
                     <td>{{ ingredient.nume }}</td>
                     <td>{{ ingredient.totalCalorii}}</td>
                     <td>{{ ingredient.totalProteine }}</td>
@@ -255,7 +255,11 @@
             addMenu(ingredient) {
                 const index = this.ingredients.indexOf(ingredient);
                 this.ingredientsMenu.push(this.ingredients[index]);
-                console.log(this.ingredientsMenu);    
+                //console.log(this.ingredientsMenu);    
+            },
+            deleteIngredient(ingredient) {
+                const index = this.ingredientsMenu.indexOf(ingredient);
+                this.ingredientsMenu.splice(index, 1);
             },
             changeLimitPerPage() {
                 var params = new URLSearchParams();
